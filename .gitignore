@@ -1,0 +1,7 @@
+*.sqlite3
+*.sql
+
+venv/
+
+.env
+Blog/db.sqlite3
