@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'core/base.html' %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<body>
+    <p>Nombre de usuario: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Avatar: <img src="{{user.avatar_set.last.imagen.url}}" width="30px" height="30px" alt="No fué posible cargar la imágen del avatar"></p>
+   
+
+    
+    
+    {% endblock %}
+    
+</body>
