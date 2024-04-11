@@ -4,4 +4,3 @@
 venv/
 
 .env
-Blog/db.sqlite3
