@@ -20,11 +20,12 @@ from core.views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('products/', products, name='products'),
+    path('products/', mostrar_productos, name='products'),
     path('logout/', exit, name='exit'),
     path('login/', login_request, name = 'login'),
     path('register/', register, name = 'register'),
     path('avatar/', agregar_avatar, name= "agregar_avatar"),
-    path('profile/', profile, name= "perfil"),
+    path('accounts/profile/', profile, name= "perfil"),
+    path('accounts/editarperfil/', editarPerfil, name="editarperfil"),
     
 ]

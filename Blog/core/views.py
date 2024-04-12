@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, login, authenticate
-from core.forms import UserRegisterForm, AvatarFormulario
-from core.models import Avatar
+from core.forms import *
+from core.models import *
 # Create your views here.
 def home(request):
     return render(request, "core/home.html")
@@ -82,5 +82,40 @@ def agregar_avatar(request):
 
     return render(request,"core/nuevo_avatar.html" , {"formu":formulario})
 
+@login_required
+def mostrar_productos(request):
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    productos = Producto.objects.all()
+    return render(request, "core/products.html", {"productos": productos})
+
 def profile(request):
     return render(request, "core/perfil.html")
+
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.username = informacion['username']
+            usuario.email = informacion['email']
+            usuario.last_name = informacion['last_name']
+            usuario.first_name = informacion['first_name']
+            usuario.set_password = informacion["password1"]
+
+            usuario.save()
+
+            return render(request, "core/home.html")
+
+    else:
+
+        miFormulario = UserEditForm(initial={'email': usuario.email, 'username': usuario.username, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
+
+    return render(request, "core/editarperfil.html", {"form":miFormulario})
