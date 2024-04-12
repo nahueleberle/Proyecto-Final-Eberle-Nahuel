@@ -1,0 +1,9 @@
+1-Extraer y abrir con Visual Studio Code o cualquier otro IDE
+3-En la consola ir a la carpeta Blog con el comando cd Blog e ingresar el comando python manage.py runserver
+4-El comando nos dará un link, hacemos ctrl+click izq en ese link y nos enviará automáticamente a la página
+5-Creamos una cuenta usando el boton Registrar.
+6-Iniciamos sesión.
+7-Una vez dentro de la página se puede y probar que todo funcione correctamente 
+8-Si queremos acceder como administrador primero debemos poner en la consola lo siguiente: python manage.py createsuperuser.
+9-Seguimos los pasos para crear el usuario y luego en el navegador dejamos solo el primer link que nos dió la app y le agregamos /admin, quedaria asi:http://127.0.0.1:8000/admin.
+10-Iniciamos sesión con el superusuario creado y desde ahi podemos cambiar las imagenes de los productos, agregar mas, cambiar su nombre y lo mismo con los Avatares de los usuarios que se hayan registrado.
